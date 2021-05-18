@@ -52,8 +52,3 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3000, () => console.log("app listening on port 3000!"));
-
-
-// dbUser1
-// cQHA31bBKZAAgOWa
-//mongodb+srv://dbUser1:cQHA31bBKZAAgOWa@cluster0.dyqs2.mongodb.net/MembersOnly1?retryWrites=true&w=majority
