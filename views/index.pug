@@ -1,6 +1,12 @@
 extends layout
 
 block content
+	if(currentUser)
+		div.currentUserDetails
+			h2.currentUserName CurrentUser: #{currentUser.username} 
+			a(href="/create_message")
+				button.saveBtn NEW MESSAGE
+	
 	h1(style={'text-align': 'center' ,'margin' : '10px 0'}) Posts:
 
 	for message in messages

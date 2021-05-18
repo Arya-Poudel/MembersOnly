@@ -5,7 +5,7 @@
 }
 
 body {
-  background:#f5b78b;
+  background:#e0eeef;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -13,7 +13,7 @@ body {
 .navbar{
 	display: flex;
 	justify-content: space-around;
-	background: #ef9d63;
+	background: #63e9ef;
     padding: 20px;
     align-items: center;
     margin-bottom: 10px;
@@ -39,7 +39,7 @@ body {
     width: 700px;
     max-width: 90%;
     margin: 10px auto;
-    background: #ef9d63;
+    background: #63e9ef;
     color: #902828;
 }
 
@@ -50,7 +50,7 @@ body {
 
 .messageDesc{
     font-weight: bold;
-    background:#f5b78b;
+    background:#e0eeef;
     padding: 10px;
     border-radius: 10px;
     margin: 10px;
@@ -113,6 +113,16 @@ button {
     background: #006400;
 }
 
+.cancelBtn {
+    background: #383333;
+    margin-left: 15px;
+}
+
+.cancelBtn:hover{
+    background: #000;
+}
+
+
 .form_error{
     text-align:center;
     color: #efe7e7;
@@ -124,7 +134,26 @@ button {
     border-radius: 10px;
 }
 
+.currentUserDetails{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    /*background: #b2ebf2;*/
+}
 
+.currentUserName{
+    padding: 10px;
+    background: #28bf57;
+    color: white;
+     border-radius: 10px;
+}
+
+.logoutBtns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 

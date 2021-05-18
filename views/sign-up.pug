@@ -12,6 +12,8 @@ block content
 		label(for='confirm_password') Confirm Password:
 		input(id='confirm_password' type='password' placeholder='Confrim Password' name='confirm_password' required='true')
 		button.saveBtn(type='submit') Submit
+		a(href="/")
+					button.cancelBtn(type='button') Cancel
 
 	if errors
 		ul

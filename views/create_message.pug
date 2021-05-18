@@ -10,6 +10,8 @@ block content
 		label(for='message') Message:
 		input(id='message' type='text' name='message' placeholder='Message' required='true')
 		button.saveBtn(type='submit') Submit
+		a(href="/")
+					button.cancelBtn(type='button') Cancel
 
 	if errors
 		ul

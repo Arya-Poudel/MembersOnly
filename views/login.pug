@@ -10,6 +10,8 @@ block content
 		label(for='password') Password:
 		input(id='password' type='password' placeholder='Password' name='password' required='true')
 		button.saveBtn(type='submit') Login
+		a(href="/")
+					button.cancelBtn(type='button') Cancel
 	
 	if message
 		for msg in message

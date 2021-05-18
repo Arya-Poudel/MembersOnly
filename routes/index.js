@@ -12,7 +12,9 @@ router.get("/login", (req, res) => res.render("login", {message: req.flash('erro
 
 router.post("/login", controller.validate_user);
 
-router.get("/logout", (req, res) => {
+router.get("/logout", (req, res) => res.render("logout"));
+
+router.post("/logout", (req, res) => {
 	req.logout();
 	res.redirect('/');
 })

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+	h1(style={'text-align': 'center' ,'margin' : '10px 0'}) #{currentUser.username}, are you sure you want to log out?
+
+	form(method='POST' action='')
+		div.logoutBtns
+			button.saveBtn(type='submit') LOGOUT
+			a(href="/")
+				button.cancelBtn(type='button') CANCEL
