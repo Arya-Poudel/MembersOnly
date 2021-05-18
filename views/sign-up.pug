@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+	h1(style={'text-align': 'center' ,'margin' : '10px 0'}) SIGN UP
+
+	form.form_div(method='POST' action='')
+		label(for='username') Username:
+		input(id='username' type='text', placeholder='Username' name='username' required='true')
+		label(for='password') Password:
+		input(id='password' type='password' placeholder='Password' name='password' required='true')
+		label(for='confirm_password') Confirm Password:
+		input(id='confirm_password' type='password' placeholder='Confrim Password' name='confirm_password' required='true')
+		button.saveBtn(type='submit') Submit
+
+	if errors
+		ul
+			for error in errors
+				p.form_error #{error.msg}
+	if error
+		p.form_error #{error}

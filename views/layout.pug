@@ -1,0 +1,24 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet' href='/styles.css' type='text/css')
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width,initial-scale=1")
+	body
+		div.navbar
+			a.navlink(href="/") HOME
+			if(currentUser)
+				a.navlink(href="/create_message") NEW MESSAGE 
+				if (!currentUser.isMember)
+					a.navlink(href="/become_member") BECOME MEMBER
+				a.navlink(href="/logout") LOGOUT
+			else
+				a.navlink(href="/login") LOGIN
+				a.navlink(href="/signup") SIGNUP
+
+		if(currentUser)
+			h2= currentUser.username 
+			
+		div.content
+			block content

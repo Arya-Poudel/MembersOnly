@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	h1(style={'text-align': 'center' ,'margin' : '10px 0'}) Posts:
+
+	for message in messages
+		div.messageDiv
+			h2 #{message.title}
+			p.messageDesc #{message.message}
+
+			div.messageDetails
+				p 
+					span(style={'font-weight': 'bold'}) Date: 
+					if(user)
+						if(user.isMember)
+							| #{message.time.toDateString() }
+				p 
+					span(style={'font-weight': 'bold'}) By: 
+					if(user)
+						if(user.isMember)
+							| #{message.user.username }
+			
+

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+	h1(style={'text-align': 'center' ,'margin' : '10px 0'}) Become Member
+
+	form.form_div(method='POST' action='')
+		label(for='club_password') Enter club password:
+		input(id='club_password' type='password' name='club_password' placeholder='Club password' required='true')
+		button.saveBtn(type='submit') Submit
+	if(errormsg)
+		p.form_error #{errormsg}

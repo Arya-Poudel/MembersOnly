@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+	h1(style={'text-align': 'center' ,'margin' : '10px 0'}) Create New Message
+
+	form.form_div(method='POST' action='')
+		label(for='title') Title:
+		input(id='title' type='text', placeholder='Title' name='title' required='true')
+		label(for='message') Message:
+		input(id='message' type='text' name='message' placeholder='Message' required='true')
+		button.saveBtn(type='submit') Submit
+
+	if errors
+		ul
+			for error in errors
+				p= error.msg

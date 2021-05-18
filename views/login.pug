@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+	h1(style={'text-align': 'center' ,'margin' : '10px 0'})  Log In
+
+	form.form_div(method='POST' action='')
+		label(for='username') Username:
+		input(id='username' type='text', placeholder='Username' name='username' required='true')
+		label(for='password') Password:
+		input(id='password' type='password' placeholder='Password' name='password' required='true')
+		button.saveBtn(type='submit') Login
+	
+	if message
+		for msg in message
+			p.form_error #{msg}
