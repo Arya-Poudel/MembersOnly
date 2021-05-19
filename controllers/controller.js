@@ -39,6 +39,7 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+
 exports.show_messages = (req,res, next) => {
 	Message.find({})
 	.populate('user')
@@ -127,7 +128,7 @@ exports.create_message = [
 			return;
 		}
 
-		// if (err) { return next(err); }
+		if (err) { return next(err); }
 		let date = new Date().toLocaleString();
 		const newMessage = new Message(
 			{
@@ -158,4 +159,29 @@ exports.become_member = (req, res, next) => {
 		res.render('become_member', {errormsg: 'Wrong password'})
 		return;
 	}
+}
+
+exports.become_admin = (req, res, next) => {
+	let adminPassword = process.env.admin_password
+	if (req.body.admin_password === adminPassword) {
+		User.findByIdAndUpdate(
+		  res.locals.currentUser._id,
+		  { isAdmin: true },
+		  { useFindAndModify: false }, 
+		  (err) => {
+				if (err) { return next(err); }
+				res.redirect('/');
+		})
+	} else{
+		res.render('become_admin', {errormsg: 'Wrong password'})
+		return;
+	}
+}
+
+exports.delete_message = (req, res, next) => {
+	Message.findByIdAndRemove(req.params.id, (err) => {
+		if (err) { return next(err); }
+		res.redirect('/');
+		return;
+	})
 }

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+	h1(style={'text-align': 'center' ,'margin' : '10px 0'}) Become Admin
+
+	form.form_div(method='POST' action='')
+		label(for='admin_password') Enter admin password:
+		input(id='admin_password' type='password' name='admin_password' placeholder='Admin password' required='true')
+		button.saveBtn(type='submit') Submit
+	if(errormsg)
+		p.form_error #{errormsg}

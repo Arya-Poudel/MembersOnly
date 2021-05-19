@@ -13,7 +13,7 @@ block content
 		div.messageDiv
 			h2 #{message.title}
 			p.messageDesc #{message.message}
-
+			
 			div.messageDetails
 				p 
 					span(style={'font-weight': 'bold'}) Date: 
@@ -25,5 +25,15 @@ block content
 					if(user)
 						if(user.isMember)
 							| #{message.user.username }
+				if(user)
+					if(user.isAdmin)
+						a(href="/delete_message/" + message._id)
+							button.delBtn Del
+
+	if(user)
+		if(user.isMember && !user.isAdmin)
+			a(href="/become_admin")
+				button.saveBtn(style={'margin' : '10px'}) Become Admin
+
 			
 
