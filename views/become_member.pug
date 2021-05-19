@@ -8,5 +8,7 @@ block content
 		label(for='club_password') Enter club password:
 		input(id='club_password' type='password' name='club_password' placeholder='Club password' required='true')
 		button.saveBtn(type='submit') Submit
+		a(href="/")
+			button.cancelBtn(type='button') Cancel
 	if(errormsg)
 		p.form_error #{errormsg}

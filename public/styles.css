@@ -39,8 +39,8 @@ body {
     width: 700px;
     max-width: 90%;
     margin: 10px auto;
-    background: #63e9ef;
-    color: #311b92;
+    background: #afdee8;
+    /*color: #311b92;*/
 }
 
 .messageDiv h2{
@@ -157,4 +157,16 @@ button {
 
 .delBtn{
     background: red;
+}
+
+@media(max-width: 475px){
+    .currentUserDetails{
+        display: block;
+    }
+
+    .navlink{
+        font-size: 0.8rem;
+    letter-spacing: 0rem;
+    font-weight: normal;
+    }
 }
