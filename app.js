@@ -11,7 +11,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 require('dotenv').config()
 
-const mongoDb = process.env.MONGODB_URL;
+const mongoDb = process.env.MONGODB_URI;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
@@ -55,4 +55,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, () => console.log("app listening on port 3000!"));
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
+
+app.listen(port, host, function() {
+  console.log("Server started.......");
+})
