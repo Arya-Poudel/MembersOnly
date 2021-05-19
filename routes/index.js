@@ -27,4 +27,13 @@ router.get("/become_member", (req, res) => res.render('become_member'));
 
 router.post("/become_member", controller.become_member);
 
+router.get("/become_admin", (req, res) => res.render('become_admin'));
+
+router.post("/become_admin", controller.become_admin);
+
+router.get("/delete_message/:id", (req, res) => res.render('delete_message'));
+
+router.post("/delete_message/:id", controller.delete_message);
+
+
 module.exports = router;
