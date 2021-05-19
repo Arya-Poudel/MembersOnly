@@ -23,8 +23,7 @@ passport.use(
 		    // passwords do not match!
 		    return done(null, false, {message: 'Incorrect password'});
 		  }
-	  })
-		
+	  })	
     });
   })
 );
@@ -46,6 +45,7 @@ exports.show_messages = (req,res, next) => {
 	.exec((err, messages) => {
 		if (err) {return next(err); }
 		res.render("index" , { user: req.user, messages: messages }) 
+		return;
 	})
 }
 
@@ -76,28 +76,29 @@ exports.create_user = [
 			return;
 		}
 
-		User.findOne({'username':req.body.username}).exec(function(err,result){
-          if(result){
+		User.findOne({'username':req.body.username},(err,result) => {
+		  if (err) { return next(err); }
+          if(result){ 
               res.render('sign-up',{title:'Sign-Up', error: 'Sorry. This username is already taken'});
               return;
-        	}
-    	})
-
-		bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-		// if (err) { return next(err); }
-		const newUser = new User(
-			{
-				username: req.body.username,
-				password: hashedPassword,
-				isMember: false,
-				isAdmin: false
-			})
-		newUser.save(err => {
+        	} else { 
+        		bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
 				if (err) { return next(err); }
-				res.redirect('/login');
-				return;
-			})
-		})		
+				const newUser = new User(
+					{
+						username: req.body.username,
+						password: hashedPassword,
+						isMember: false,
+						isAdmin: false
+					})
+				newUser.save(err => {
+						if (err) { return next(err); }
+						res.redirect('/login');
+						return;
+					})
+				})		
+        	}
+	    	})
 	}
 ]
 
@@ -140,6 +141,7 @@ exports.create_message = [
 		newMessage.save(err => {
 				if (err) { return next(err); }
 				res.redirect('/');
+				return;
 			})
 	}
 ]
@@ -154,6 +156,7 @@ exports.become_member = (req, res, next) => {
 		  (err) => {
 				if (err) { return next(err); }
 				res.redirect('/');
+				return;
 		})
 	} else{
 		res.render('become_member', {errormsg: 'Wrong password'})
@@ -171,6 +174,7 @@ exports.become_admin = (req, res, next) => {
 		  (err) => {
 				if (err) { return next(err); }
 				res.redirect('/');
+				return;
 		})
 	} else{
 		res.render('become_admin', {errormsg: 'Wrong password'})
