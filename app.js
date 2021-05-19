@@ -7,6 +7,8 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const createError = require('http-errors');
 const flash = require('connect-flash');
+const compression = require('compression');
+const helmet = require('helmet');
 require('dotenv').config()
 
 const mongoDb = process.env.MONGODB_URL;
@@ -18,6 +20,8 @@ const app = express();
 app.set("views", path.join(__dirname, 'views'));
 app.set("view engine", "pug");
 
+app.use(helmet());
+app.use(compression());
 app.use(cookieParser());
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(flash());
