@@ -129,7 +129,6 @@ exports.create_message = [
 			return;
 		}
 
-		if (err) { return next(err); }
 		let date = new Date().toLocaleString();
 		const newMessage = new Message(
 			{
